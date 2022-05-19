@@ -36,6 +36,7 @@ int bajaCensistas(Censista* list, int len, int id);
 void mostrarCensistaLiberado(Censista element);
 int listarCensistasLiberados(Censista pArray[], int len);
 int hayCensistaLiberado(Censista pArray[], int len);
-
+int cargarCensistaForzado(Censista pArray[], int len, char nombre[], char apellido[], char calle[], int altura, char localidad[],
+		int edad, int dia , int mes, int anio);
 
 #endif /* CENSISTA_H_ */

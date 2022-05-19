@@ -15,6 +15,11 @@ char estadoCencistas[3][20] = {"ACTIVO","INACTIVO","LIBERADO"};
 // INACTIVO = se le dio de baja (pero el .isEmpty sigue en 0 significa que no se va a reemplazar por otro en la memoria)
 // LUBERADO = no se le asigno una zona
 
+/** \brief inicializa una array de passenger (isEmpty = 1)
+* \param list Passenger* se ingresa una arry del tipo Passenger
+* \param len int se ingresa la longitud del array
+* \return int retorna un (-1) si hubo un error o (0) si se puedo inicializar el array
+*/
 int inicializarCensistas(Censista* list, int len)
 {
 	int retorno = -1;
@@ -75,6 +80,12 @@ int idIncrementalCensista()
     return idCensista;
 }
 
+/** \brief muestra si una lista array tiene algo cargado (is.empty = 0)
+*
+* \param list Passenger* se ingresa una array de tipo passenger
+* \param len int indica la longitud de la array
+* \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
+*/
 int hayAlgoCargado(Censista pArray[], int len)
 {
 	int retorno = 0;
@@ -92,6 +103,12 @@ int hayAlgoCargado(Censista pArray[], int len)
 	return retorno;
 }
 
+/** \brief imprime un pasajero
+*
+* \param pasajero Passenger se ingresa una variable tipo passenger
+* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+*
+*/
 void mostrarCensista(Censista element)
 {
 	if (element.isEmpty == 0)
@@ -102,6 +119,13 @@ void mostrarCensista(Censista element)
 	}
 }
 
+/** \brief imprime los elementos de una array passenger si esta ocupado
+*
+* \param list Passenger* se ingresa una array de passenger
+* \param len int se ingresa la longitud de la array
+* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+*
+*/
 int listarCensistas(Censista pArray[], int len)
 {
 	int retorno = -1;
@@ -116,6 +140,13 @@ int listarCensistas(Censista pArray[], int len)
 	return retorno;
 }
 
+/** \brief busca un pasajero por la array segun su id y retorna el index donde se encuentra
+* \param list Passenger* se ingresa una array de passenger
+* \param len int  se ingresa la longitud de la array
+* \param id int se ingresa el id del pasajero solicitado
+* \return int retorna un -1 si hubo algun error o el index del pasajero solicitado
+*
+*/
 int EncontrarCensistaPorId(Censista pArray[], int len,int id)
 {
 	int retorno = -1;
@@ -133,6 +164,13 @@ int EncontrarCensistaPorId(Censista pArray[], int len,int id)
 	return retorno;
 }
 
+/** \brief busca un pasajero por la array segun su id y se modifica algun campo
+* \param list Passenger* se ingresa una array de passenger
+* \param len int  se ingresa la longitud de la array
+* \param id int se ingresa el id del pasajero solicitado
+* \return int retorna un (-1) si hubo algun error o (0) si se modifico correctamente
+*
+*/
 int modificarCensista(Censista pArray[], int len, int idCencista)
 {
 	int retorno = -1;
@@ -239,6 +277,14 @@ int modificarCensista(Censista pArray[], int len, int idCencista)
 	return retorno;
 }
 
+/** \brief elimina a un pasajero ingresando su id
+*
+* \param list Passenger* se ingresa un array de passenger
+* \param len int indica la longitud de la array
+* \param id int se ingresa el id del pasajero a eliminar
+* \return int retorno un (-1) si hay algun error y (0) si funciono correctamente
+*
+*/
 int bajaCensistas(Censista* list, int len, int id)
 {
 	int retorno = -1;
@@ -250,7 +296,7 @@ int bajaCensistas(Censista* list, int len, int id)
 
 		if(index != -1 && list[index].estadoCensista == 3)
 		{
-			printf("Estas seguro de eliminar a: ");
+			printf("Estas seguro de eliminar a: \n");
 			mostrarCensista(list[index]);
 			if(!utn_getNumero(&opcionesBuffer, "SI[1] - NO[2]\n", "Opcion no valida\n", 1, 2, 1))
 			{
@@ -301,6 +347,37 @@ int hayCensistaLiberado(Censista pArray[], int len)
 			if (pArray[i].isEmpty == 0 && pArray[i].estadoCensista == 3)
 			{
 				retorno = 1;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+
+int cargarCensistaForzado(Censista pArray[], int len, char nombre[], char apellido[], char calle[], int altura, char localidad[],
+		int edad, int dia , int mes, int anio)
+{
+	int retorno = -1;
+	int i;
+	if (pArray != NULL && len > 0)
+	{
+		for(i = 0; i < len; i++)
+		{
+			if(pArray[i].isEmpty == 1 )
+			{
+				retorno = 0;
+				strcpy(pArray[i].nombre,nombre);
+				strcpy(pArray[i].apellido,apellido);
+				strcpy(pArray[i].direccion.calle,calle);
+				pArray[i].direccion.altura = altura;
+				strcpy(pArray[i].direccion.localidad,localidad);
+				pArray[i].edad = edad;
+				pArray[i].fechaNacimiento.dia = dia;
+				pArray[i].fechaNacimiento.mes = mes;
+				pArray[i].fechaNacimiento.anio = anio;
+				pArray[i].idCensista = idIncrementalCensista();
+				pArray[i].isEmpty = 0;
+				pArray[i].estadoCensista = 3; // liberado (que todavia no fue asignado a ninguna zona)
 				break;
 			}
 		}

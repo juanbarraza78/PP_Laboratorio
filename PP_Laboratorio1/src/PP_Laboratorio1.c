@@ -39,8 +39,9 @@ int main(void) {
 		printf("6) Carga de datos: \n");
 		printf("7) Mostrar censistas: \n");
 		printf("8) Mostrar zonas: \n");
-		printf("9) Salir.\n");
-		if(!utn_getNumero(&opciones, "Ingrese una opcion\n", "Error, No existe esa opcion\n", 1, 9, 0))
+		printf("9) Carga FORZADA.\n");
+		printf("10) Salir.\n");
+		if(!utn_getNumero(&opciones, "Ingrese una opcion\n", "Error, No existe esa opcion\n", 1, 10, 0))
 		{
 			switch(opciones)
 			{
@@ -119,19 +120,63 @@ int main(void) {
 				{
 					printf("Faltan datos\n");
 				}
-				// los censistas tienen que estar liberados y las zonas no tienen que estar asignadas (dniCensistas != -1) y tienen que estar en pendiente
 				break;
 			case 6:
-				printf("Opcion 6: \n");
+				if(hayZonaPendienteYAsignadas(zonas, LEN_ZONAS) == 1)
+				{
+					if(!finalizarZonas(zonas, LEN_ZONAS, censistas, LEN_CENSISTAS))
+					{
+						printf("Se finalizo correctamente la zona\n");
+					}
+					else
+					{
+						printf("No se finalizo correctamente la zona\n");
+					}
+				}
+				else
+				{
+					printf("Faltan datos\n");
+				}
 				break;
 			case 7:
-				listarCensistas(censistas, LEN_CENSISTAS);
+				if(hayAlgoCargado(censistas, LEN_CENSISTAS))
+				{
+					listarCensistas(censistas, LEN_CENSISTAS);
+				}
+				else
+				{
+					printf("No se cargo ningun censista\n");
+				}
+
 				break;
 			case 8:
-				printf("Opcion 8: \n");
+				if(hayZona(zonas, LEN_ZONAS) == 1)
+				{
+					listarTodosLosTiposDeZonas(zonas, LEN_ZONAS, censistas, LEN_CENSISTAS);
+				}
+				else
+				{
+					printf("No se cargo ninguna zona\n");
+				}
+				break;
+			case 9:
+				if(!cargarCensistaForzado(censistas, LEN_CENSISTAS, "Nombre1", "Apellido", "Calle", 11, "Localidad", 22, 12, 12, 1999) &&
+						!cargarCensistaForzado(censistas, LEN_CENSISTAS, "Nombre2", "Bpellido", "Calle", 20, "Localidad", 19, 11, 12, 2000) &&
+						!cargarCensistaForzado(censistas, LEN_CENSISTAS, "Nombre3", "Cpellido", "Calle", 30, "Localidad", 18, 11, 12, 1980) &&
+						!cargarCensistaForzado(censistas, LEN_CENSISTAS, "Nombre4", "Dpellido", "Calle", 40, "Localidad", 30, 9, 12, 1990) &&
+						!cargarCensistaForzado(censistas, LEN_CENSISTAS, "Nombre5", "Epellido", "Calle", 50, "Localidad", 22, 10, 12, 1970) &&
+						!cargarCensistaForzado(censistas, LEN_CENSISTAS, "Nombre6", "Fpellido", "Calle", 60, "Localidad", 23, 10, 12, 1975) &&
+						!cargarZonasForzada(zonas, LEN_ZONAS, "Calle1", "Calle2", "Calle3", "Calle4", 2) &&
+						!cargarZonasForzada(zonas, LEN_ZONAS, "Dalle1", "Dalle2", "Calle3", "Calle4", 1) &&
+						!cargarZonasForzada(zonas, LEN_ZONAS, "Ealle1", "Ealle2", "Calle3", "Calle4", 3) &&
+						!cargarZonasForzada(zonas, LEN_ZONAS, "Falle1", "Falle2", "Calle3", "Calle4", 5) &&
+						!cargarZonasForzada(zonas, LEN_ZONAS, "Galle1", "Galle2", "Calle3", "Calle4", 4))
+				{
+					printf("Carga forzada exitosa\n");
+				}
 				break;
 			}
 		}
-	}while(opciones != 9);
+	}while(opciones != 10);
 	return EXIT_SUCCESS;
 }
