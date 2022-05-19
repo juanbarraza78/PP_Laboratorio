@@ -231,3 +231,77 @@ int InformarCensistaCuyaEsLaZonaMasCensada(Zona pArrayZona[], int lenZona,Censis
 	}
 	return retorno;
 }
+
+//int InformarPromedioDeCensos(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista)
+//{
+//	int retorno = -1;
+//
+//	int acomulardorAvellaneda = 0;
+//	int acomulardorLanus = 0;
+//	int acomulardorLomasDeZamora = 0;
+//	int acomulardorBanfield = 0;
+//	int acomulardorMarmol = 0;
+//
+//	int contadorAvellaneda = 0;
+//	int contadorLanus = 0;
+//	int contadorLomasDeZamora = 0;
+//	int contadorBanfield = 0;
+//	int contadorMarmol = 0;
+//
+//	Censista bufferCensistaLista[100];
+//	inicializarCensistas(bufferCensistaLista, 100);
+//
+//	if(pArrayZona != NULL && lenZona > 0)
+//	{
+//		retorno= 0;
+//		for(int i = 0; i < lenZona; i++)
+//		{
+//			if(pArrayZona[i].estadoZona == 2)
+//			{
+//				if(pArrayZona[i].localidad == 1)
+//				{
+//					acomulardorAvellaneda += pArrayZona[i].CantidadAusentes;
+//					contadorAvellaneda++:
+//				}
+//				else if(pArrayZona[i].localidad == 2)
+//				{
+//					acomulardorLanus += pArrayZona[i].CantidadAusentes;
+//				}
+//				else if(pArrayZona[i].localidad == 3)
+//				{
+//					acomulardorLomasDeZamora += pArrayZona[i].CantidadAusentes;
+//				}
+//				else if(pArrayZona[i].localidad == 4)
+//				{
+//					acomulardorBanfield += pArrayZona[i].CantidadAusentes;
+//				}
+//				else if(pArrayZona[i].localidad == 5)
+//				{
+//					acomulardorMarmol += pArrayZona[i].CantidadAusentes;
+//				}
+//			}
+//		}
+//		if(acomulardorAvellaneda > acomulardorLanus && acomulardorAvellaneda > acomulardorLomasDeZamora && acomulardorAvellaneda > acomulardorBanfield && acomulardorAvellaneda > acomulardorMarmol)
+//		{
+//			printf("La localidad con mas ausentes fue Avellaneda");
+//		}
+//		else if(acomulardorLanus > acomulardorAvellaneda && acomulardorLanus > acomulardorLomasDeZamora && acomulardorLanus > acomulardorBanfield && acomulardorLanus > acomulardorMarmol)
+//		{
+//			printf("La localidad con mas ausentes fue Lanus");
+//		}
+//		else if(acomulardorLomasDeZamora > acomulardorAvellaneda && acomulardorLomasDeZamora > acomulardorLanus && acomulardorLomasDeZamora > acomulardorBanfield && acomulardorLomasDeZamora > acomulardorMarmol)
+//		{
+//			printf("La localidad con mas ausentes fue Lomas De Zamora");
+//		}
+//		else if(acomulardorBanfield > acomulardorAvellaneda && acomulardorBanfield > acomulardorLanus && acomulardorBanfield > acomulardorLomasDeZamora && acomulardorBanfield > acomulardorMarmol)
+//		{
+//			printf("La localidad con mas ausentes fue Banfield");
+//		}
+//		else if(acomulardorMarmol > acomulardorAvellaneda && acomulardorMarmol > acomulardorLanus && acomulardorMarmol > acomulardorLomasDeZamora && acomulardorMarmol > acomulardorBanfield)
+//		{
+//			printf("La localidad con mas ausentes fue Marmol");
+//		}
+//	}
+//	return retorno;
+//}
+

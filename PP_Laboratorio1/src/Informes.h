@@ -12,5 +12,6 @@ int MostrarCantidadDeCensitasEnEstadoActivoYZonaPendiente(Zona pArrayZona[], int
 int MostrarCensitasDeEtc(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista);
 int ordenarCensistas(Censista* list, int len, int order);
 int InformarLocalidadMayorCasasAusentes(Zona pArrayZona[], int lenZona);
+int InformarCensistaCuyaEsLaZonaMasCensada(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista);
 
 #endif /* INFORMES_H_ */

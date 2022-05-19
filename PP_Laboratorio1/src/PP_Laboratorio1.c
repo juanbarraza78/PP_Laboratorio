@@ -41,11 +41,11 @@ int main(void) {
 		printf("7) Mostrar censistas: \n");
 		printf("8) Mostrar zonas: \n");
 		printf("9) Carga FORZADA.\n");
-		printf("10) Carga FORZADA.\n");
-		printf("11) Carga FORZADA.\n");
-		printf("12) Carga FORZADA.\n");
-		printf("13) Carga FORZADA.\n");
-		printf("14) Carga FORZADA.\n");
+		printf("10) Informar: Cantidad de censistas en estado Activo con zona Pendiente\n");
+		printf("11) Informar: Censistas de Avellaneda, Lanús, Lomas de Zamora o Banfield ordenados alfabéticamente por apellido y nombre\n");
+		printf("12) Informar: Nombre de localidad con más casas ausentes\n");
+		printf("13) Informar: El censista cuya zona fue la más censada\n");
+		printf("14) Informar: el promedio de censos por censista/zona\n");
 		printf("15) Salir.\n");
 		if(!utn_getNumero(&opciones, "Ingrese una opcion\n", "Error, No existe esa opcion\n", 1, 15, 0))
 		{
