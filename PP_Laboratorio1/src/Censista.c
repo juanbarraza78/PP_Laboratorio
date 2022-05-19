@@ -15,8 +15,9 @@ char estadoCencistas[3][20] = {"ACTIVO","INACTIVO","LIBERADO"};
 // INACTIVO = se le dio de baja (pero el .isEmpty sigue en 0 significa que no se va a reemplazar por otro en la memoria)
 // LUBERADO = no se le asigno una zona
 
-/** \brief inicializa una array de passenger (isEmpty = 1)
-* \param list Passenger* se ingresa una arry del tipo Passenger
+/** \brief inicializa una array de censistas (isEmpty = 1)
+*
+* \param list Censista* se ingresa una arry del tipo Censista
 * \param len int se ingresa la longitud del array
 * \return int retorna un (-1) si hubo un error o (0) si se puedo inicializar el array
 */
@@ -34,6 +35,12 @@ int inicializarCensistas(Censista* list, int len)
 	return retorno;
 }
 
+/** \brief carga datos a una array de censistas
+*
+* \param pArray[] Censista* se ingresa una arry del tipo Censista
+* \param len int se ingresa la longitud del array
+* \return int retorna un (-1) si hubo un error o (0) si se pudo cargar correctamente
+*/
 int CargarCensista(Censista pArray[], int len)
 {
 	int retorno = -1;
@@ -73,6 +80,10 @@ int CargarCensista(Censista pArray[], int len)
 	return retorno;
 }
 
+/** \brief incrementa el id en 1 cada vez que se castea
+ *
+* \return int retorna el id
+*/
 int idIncrementalCensista()
 {
     static int idCensista = 100;
@@ -82,7 +93,7 @@ int idIncrementalCensista()
 
 /** \brief muestra si una lista array tiene algo cargado (is.empty = 0)
 *
-* \param list Passenger* se ingresa una array de tipo passenger
+* \param pArray[] Censista se ingresa una array de tipo Censista
 * \param len int indica la longitud de la array
 * \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
 */
@@ -103,10 +114,10 @@ int hayAlgoCargado(Censista pArray[], int len)
 	return retorno;
 }
 
-/** \brief imprime un pasajero
+/** \brief imprime un censista
 *
-* \param pasajero Passenger se ingresa una variable tipo passenger
-* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+* \param element Censista se ingresa una variable tipo Censista
+* \return void
 *
 */
 void mostrarCensista(Censista element)
@@ -119,9 +130,9 @@ void mostrarCensista(Censista element)
 	}
 }
 
-/** \brief imprime los elementos de una array passenger si esta ocupado
+/** \brief imprime los elementos de una array Censista si esta ocupado
 *
-* \param list Passenger* se ingresa una array de passenger
+* \param pArray[] Censista se ingresa una array de Censista
 * \param len int se ingresa la longitud de la array
 * \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
 *
@@ -140,11 +151,12 @@ int listarCensistas(Censista pArray[], int len)
 	return retorno;
 }
 
-/** \brief busca un pasajero por la array segun su id y retorna el index donde se encuentra
-* \param list Passenger* se ingresa una array de passenger
+/** \brief busca un Censista por la array segun su id y retorna el index donde se encuentra
+ *
+* \param pArray[] Censista se ingresa una array de Censista
 * \param len int  se ingresa la longitud de la array
-* \param id int se ingresa el id del pasajero solicitado
-* \return int retorna un -1 si hubo algun error o el index del pasajero solicitado
+* \param id int se ingresa el id del cencista solicitado
+* \return int retorna un -1 si hubo algun error o el index del Censista solicitado
 *
 */
 int EncontrarCensistaPorId(Censista pArray[], int len,int id)
@@ -164,10 +176,10 @@ int EncontrarCensistaPorId(Censista pArray[], int len,int id)
 	return retorno;
 }
 
-/** \brief busca un pasajero por la array segun su id y se modifica algun campo
-* \param list Passenger* se ingresa una array de passenger
+/** \brief busca un Censista por la array segun su id y se modifica algun campo
+* \param pArray[] Censista* se ingresa una array de Censista
 * \param len int  se ingresa la longitud de la array
-* \param id int se ingresa el id del pasajero solicitado
+* \param idCencista int se ingresa el id del pasajero solicitado
 * \return int retorna un (-1) si hubo algun error o (0) si se modifico correctamente
 *
 */
@@ -277,11 +289,11 @@ int modificarCensista(Censista pArray[], int len, int idCencista)
 	return retorno;
 }
 
-/** \brief elimina a un pasajero ingresando su id
+/** \brief elimina a un Cencista ingresando su id
 *
-* \param list Passenger* se ingresa un array de passenger
+* \param list Cencista* se ingresa un array de Cencista
 * \param len int indica la longitud de la array
-* \param id int se ingresa el id del pasajero a eliminar
+* \param id int se ingresa el id del Cencista a eliminar
 * \return int retorno un (-1) si hay algun error y (0) si funciono correctamente
 *
 */
@@ -313,6 +325,12 @@ int bajaCensistas(Censista* list, int len, int id)
 	return retorno;
 }
 
+/** \brief imprime un censista si su estado es "liberado"
+*
+* \param element Censista se ingresa una variable tipo Censista
+* \return void
+*
+*/
 void mostrarCensistaLiberado(Censista element)
 {
 	if (element.isEmpty == 0 && element.estadoCensista == 3)
@@ -323,6 +341,13 @@ void mostrarCensistaLiberado(Censista element)
 	}
 }
 
+/** \brief imprime los elementos de una array Censista si esta ocupado
+*
+* \param pArray[] Censista se ingresa una array de Censista
+* \param len int se ingresa la longitud de la array
+* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+*
+*/
 int listarCensistasLiberados(Censista pArray[], int len)
 {
 	int retorno = -1;
@@ -337,6 +362,13 @@ int listarCensistasLiberados(Censista pArray[], int len)
 	return retorno;
 }
 
+/** \brief muestra si una lista array tiene algun censista liberado (.estadoCensista = 3)
+*
+* \param pArray[] Censista se ingresa una array de tipo Censista
+* \param len int indica la longitud de la array
+* \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
+*
+*/
 int hayCensistaLiberado(Censista pArray[], int len)
 {
 	int retorno = 0;
@@ -354,6 +386,22 @@ int hayCensistaLiberado(Censista pArray[], int len)
 	return retorno;
 }
 
+/** \brief carga datos a una array de censistas (isEmpty = 1)
+*
+* \param pArray[] Censista* se ingresa una arry del tipo Censista
+* \param len int se ingresa la longitud del array
+* \param nombre[] char se ingresa el nombre del censista
+* \param apellido[] char se ingresa el apellido del censista
+* \param calle[] char se ingresa la calle donde vive el censista
+* \param altura int se ingresa la altura de la calle
+* \param localidad[] char se ingresa la localidad donde vive el censista
+* \param edad int se ingresa la edad del censista
+* \param dia int se ingresa el dia de su fecha de nacimiento
+* \param mes int se ingresa  el mes de su fecha de nacimiento
+* \param anio int se ingresa  el año de su fecha de nacimiento
+* \return int retorna un (-1) si hubo un error o (0) si se pudo cargar correctamente
+*
+*/
 int cargarCensistaForzado(Censista pArray[], int len, char nombre[], char apellido[], char calle[], int altura, char localidad[],
 		int edad, int dia , int mes, int anio)
 {

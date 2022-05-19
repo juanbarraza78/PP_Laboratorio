@@ -14,6 +14,12 @@
 char localidades[5][20] = {"Claypole","Lanus","Florencio varela","Solano","Marmol"};
 char estadosZonas[2][20] = {"PENDIENTE","FINALIZADO"};
 
+/** \brief inicializa una array de zonas (isEmpty = 1)
+*
+* \param list Zona* se ingresa una arry del tipo Zona
+* \param len int se ingresa la longitud del array
+* \return int retorna un (-1) si hubo un error o (0) si se puedo inicializar el array
+*/
 int inicializarZonas(Zona* list, int len)
 {
 	int retorno = -1;
@@ -28,6 +34,12 @@ int inicializarZonas(Zona* list, int len)
 	return retorno;
 }
 
+/** \brief carga datos a una array de Zona
+*
+* \param pArray[] Zona se ingresa una arry del tipo Zona
+* \param len int se ingresa la longitud del array
+* \return int retorna un (-1) si hubo un error o (0) si se pudo cargar correctamente
+*/
 int cargarZonas(Zona pArray[], int len)
 {
 	int retorno = -1;
@@ -64,6 +76,10 @@ int cargarZonas(Zona pArray[], int len)
 	return retorno;
 }
 
+/** \brief incrementa el id en 1 cada vez que se castea
+ *
+* \return int retorna el id
+*/
 int idIncrementalZona()
 {
     static int idZona = 200;
@@ -71,6 +87,12 @@ int idIncrementalZona()
     return idZona;
 }
 
+/** \brief imprime una Zona solamente si esta sin asignar y en estado pendiente
+*
+* \param element Zona se ingresa una variable tipo Zona
+* \return void
+*
+*/
 void mostrarZonaPendienteYSinAsignar(Zona element)
 {
 	if (element.isEmpty == 0 && element.estadoZona == 1 && element.idCensista == -1)
@@ -81,6 +103,13 @@ void mostrarZonaPendienteYSinAsignar(Zona element)
 	}
 }
 
+/** \brief imprime los elementos de una array Zona si esta ocupado
+*
+* \param pArray[] Zona se ingresa una array de Zona
+* \param len int se ingresa la longitud de la array
+* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+*
+*/
 int listarZonasPendientesYSinAsignar(Zona pArray[], int len)
 {
 	int retorno = -1;
@@ -95,6 +124,12 @@ int listarZonasPendientesYSinAsignar(Zona pArray[], int len)
 	return retorno;
 }
 
+/** \brief muestra si una lista array tiene una zona pendiente y sin asignar (pArray[i].estadoZona = 1 && pArray[i].idCensista = -1)
+*
+* \param pArray[] Zona se ingresa una array de tipo Zona
+* \param len int indica la longitud de la array
+* \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
+*/
 int hayZonaPendienteYSinAsignar(Zona pArray[], int len)
 {
 	int retorno = 0;
@@ -112,6 +147,14 @@ int hayZonaPendienteYSinAsignar(Zona pArray[], int len)
 	return retorno;
 }
 
+/** \brief busca una Zona por una array segun su id y retorna el index donde se encuentra
+ *
+* \param pArray[] Zona se ingresa una array de Zona
+* \param len int  se ingresa la longitud de la array
+* \param id int se ingresa el id de la Zona solicitada
+* \return int retorna un -1 si hubo algun error o el index de la Zona solicitada
+*
+*/
 int EncontrarZonaPorId(Zona pArray[], int len,int id)
 {
 	int retorno = -1;
@@ -129,6 +172,15 @@ int EncontrarZonaPorId(Zona pArray[], int len,int id)
 	return retorno;
 }
 
+/** \brief pide dos id: uno de un censista y uno de una zona y se vinculan por medio del idCensista
+ *
+* \param pArrayZona[] Zona se ingresa una array de Zona
+* \param lenZona int  se ingresa la longitud de la array zona
+* \param pArrayCensista[] Censista se ingresa una array de censista
+* \param lenCensista int se ingresa la longitud de la array censista
+* \return int retorna un -1 si hubo algun error o el index del Censista solicitado
+*
+*/
 int asignarZonaACensista(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista)
 {
 	int retorno = -1;
@@ -159,6 +211,18 @@ int asignarZonaACensista(Zona pArrayZona[], int lenZona,Censista pArrayCensista[
 	return retorno;
 }
 
+/** \brief carga datos a una array de censistas de manera forzada
+*
+* \param pArray[] Zona* se ingresa una arry del tipo Zona
+* \param len int se ingresa la longitud del array
+* \param calleUno[] char se ingresa el nombre de la calle n1
+* \param calleDos[] char se ingresa el nombre de la calle n2
+* \param calleTres[] char se ingresa el nombre de la calle n3
+* \param calleCuatro[] char se ingresa el nombre de la calle n4
+* \param localidad int se ingresa la localidad de la zona
+* \return int retorna un (-1) si hubo un error o (0) si se pudo cargar correctamente
+*
+*/
 int cargarZonasForzada(Zona pArray[], int len, char calleUno[], char calleDos[], char calleTres[], char calleCuatro[], int localidad)
 {
 	int retorno = -1;
@@ -187,6 +251,16 @@ int cargarZonasForzada(Zona pArray[], int len, char calleUno[], char calleDos[],
 	return retorno;
 }
 
+
+/** \brief pido el id de una zona pendiente y asignada y luego completo los datos faltantes (cantidad: is situ, virtual , ausente) y luego cambio su estado a finalizado
+*
+* \param pArrayZona[] Zona se ingresa una array del tipo Zona
+* \param lenZona int se ingresa la longitud del array zona
+* \param pArrayCensista[] Censista se ingresa una array del tipo censista
+* \param lenCensista int se ingresa la longitud del array censista
+* \return int retorna un (-1) si hubo un error o (0) si se pudo cargar correctamente
+*
+*/
 int finalizarZonas(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista)
 {
 	int retorno = -1;
@@ -218,6 +292,12 @@ int finalizarZonas(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int
 	return retorno;
 }
 
+/** \brief imprime una Zona solamente si esta asignada y en estado pendiente
+*
+* \param element Zona se ingresa una variable tipo Zona
+* \return void
+*
+*/
 void mostrarZonaPendienteYAsignadas(Zona element)
 {
 	if (element.isEmpty == 0 && element.estadoZona == 1 && element.idCensista != -1)
@@ -227,6 +307,13 @@ void mostrarZonaPendienteYAsignadas(Zona element)
 	}
 }
 
+/** \brief imprime los elementos de una array Zona si esta ocupado
+*
+* \param pArray[] Zona se ingresa una array de Zona
+* \param len int se ingresa la longitud de la array
+* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+*
+*/
 int listarZonasPendientesYAsignadas(Zona pArray[], int len)
 {
 	int retorno = -1;
@@ -241,6 +328,12 @@ int listarZonasPendientesYAsignadas(Zona pArray[], int len)
 	return retorno;
 }
 
+/** \brief muestra si una lista array tiene una zona pendiente y sin asignar (pArray[i].estadoZona = 1 && pArray[i].idCensista = -1)
+*
+* \param pArray[] Zona se ingresa una array de tipo Zona
+* \param len int indica la longitud de la array
+* \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
+*/
 int hayZonaPendienteYAsignadas(Zona pArray[], int len)
 {
 	int retorno = 0;
@@ -258,6 +351,12 @@ int hayZonaPendienteYAsignadas(Zona pArray[], int len)
 	return retorno;
 }
 
+/** \brief imprime una Zona
+*
+* \param element Zona se ingresa una variable tipo Zona
+* \return void
+*
+*/
 void mostrarZona(Zona element)
 {
 	if (element.isEmpty == 0)
@@ -267,6 +366,13 @@ void mostrarZona(Zona element)
 	}
 }
 
+/** \brief imprime los elementos de una array Censista si esta ocupado
+*
+* \param pArray[] Zona se ingresa una array de Zona
+* \param len int se ingresa la longitud de la array
+* \return int retorna (-1) si hubo algun error o (0) si se pudo imprimir en pantalla
+*
+*/
 int listarZonas(Zona pArray[], int len)
 {
 	int retorno = -1;
@@ -281,6 +387,14 @@ int listarZonas(Zona pArray[], int len)
 	return retorno;
 }
 
+/** \brief se muestra en pantalla todos los tipos de zona que tiene el programa con sus respectivos datos
+*
+* \param pArrayZona[] Zona se ingresa una array de tipo Zona
+* \param lenZona int indica la longitud de la array
+* \param pArrayCensista[] Censista se ingresa  un array de tipo censista
+* \param lenCensista int se ingresa la longitud del arra censista
+* \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
+*/
 int listarTodosLosTiposDeZonas(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista)
 {
 	int retorno = -1;
@@ -316,6 +430,12 @@ int listarTodosLosTiposDeZonas(Zona pArrayZona[], int lenZona,Censista pArrayCen
 	return retorno;
 }
 
+/** \brief muestra si una lista array tiene una zona
+*
+* \param pArray[] Zona se ingresa una array de tipo Zona
+* \param len int indica la longitud de la array
+* \return int retorno un 0 si no hay nada cargado o un 1 si hay algo cargado
+*/
 int hayZona(Zona pArray[], int len)
 {
 	int retorno = 0;
