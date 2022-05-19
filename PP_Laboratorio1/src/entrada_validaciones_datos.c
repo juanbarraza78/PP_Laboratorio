@@ -366,7 +366,7 @@ int esNombre(char* cadena, int limite)
 	{
 		for(int i = 0; i<limite && cadena[i] != '\0'; i++ )
 		{
-			if((cadena[i] < 'a' || cadena[i] > 'z') && (cadena[i] < 'A' || cadena[i] > 'Z'))
+			if((cadena[i] < 'a' || cadena[i] > 'z') && (cadena[i] < 'A' || cadena[i] > 'Z') && cadena[i] != ' ')
 			{
 				retorno = 0;
 				break;
