@@ -8,6 +8,9 @@
 #ifndef INFORMES_H_
 #define INFORMES_H_
 
-
+int MostrarCantidadDeCensitasEnEstadoActivoYZonaPendiente(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista);
+int MostrarCensitasDeEtc(Zona pArrayZona[], int lenZona,Censista pArrayCensista[], int lenCensista);
+int ordenarCensistas(Censista* list, int len, int order);
+int InformarLocalidadMayorCasasAusentes(Zona pArrayZona[], int lenZona);
 
 #endif /* INFORMES_H_ */

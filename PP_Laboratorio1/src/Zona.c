@@ -11,7 +11,8 @@
 #include "Censista.h"
 #include "entrada_validaciones_datos.h"
 
-char localidades[5][20] = {"Claypole","Lanus","Florencio varela","Solano","Marmol"};
+
+char localidades[5][20] = {"Avellaneda","Lanús","Lomas de Zamora","Banfield","Marmol"};
 char estadosZonas[2][20] = {"PENDIENTE","FINALIZADO"};
 
 /** \brief inicializa una array de zonas (isEmpty = 1)

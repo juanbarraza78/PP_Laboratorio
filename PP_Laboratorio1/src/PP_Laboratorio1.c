@@ -15,6 +15,7 @@
 #include "Zona.h"
 #include "Direccion.h"
 #include "FechaDeNacimiento.h"
+#include "Informes.h"
 
 #define LEN_CENSISTAS 10
 #define LEN_ZONAS 10
@@ -40,8 +41,13 @@ int main(void) {
 		printf("7) Mostrar censistas: \n");
 		printf("8) Mostrar zonas: \n");
 		printf("9) Carga FORZADA.\n");
-		printf("10) Salir.\n");
-		if(!utn_getNumero(&opciones, "Ingrese una opcion\n", "Error, No existe esa opcion\n", 1, 10, 0))
+		printf("10) Carga FORZADA.\n");
+		printf("11) Carga FORZADA.\n");
+		printf("12) Carga FORZADA.\n");
+		printf("13) Carga FORZADA.\n");
+		printf("14) Carga FORZADA.\n");
+		printf("15) Salir.\n");
+		if(!utn_getNumero(&opciones, "Ingrese una opcion\n", "Error, No existe esa opcion\n", 1, 15, 0))
 		{
 			switch(opciones)
 			{
@@ -175,8 +181,22 @@ int main(void) {
 					printf("Carga forzada exitosa\n");
 				}
 				break;
+			case 10:
+				MostrarCantidadDeCensitasEnEstadoActivoYZonaPendiente(zonas, LEN_ZONAS, censistas, LEN_CENSISTAS);
+				break;
+			case 11:
+				MostrarCensitasDeEtc(zonas, LEN_ZONAS, censistas, LEN_CENSISTAS);
+				break;
+			case 12:
+				InformarLocalidadMayorCasasAusentes(zonas, LEN_ZONAS);
+				break;
+			case 13:
+				InformarCensistaCuyaEsLaZonaMasCensada(zonas, LEN_ZONAS, censistas, LEN_CENSISTAS);
+				break;
+			case 14:
+				break;
 			}
 		}
-	}while(opciones != 10);
+	}while(opciones != 15);
 	return EXIT_SUCCESS;
 }
